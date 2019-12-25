@@ -8,8 +8,8 @@ import pymysql.cursors
 #初始化开始时间，分词字典，词频统计字典
 firsttime = time.time()
 
-jieba.set_dictionary('dictionary/疾病大全.txt')  #分词字典
-jieba.analyse.set_idf_path('dictionary/疾病大全.txt') #语料库字典
+jieba.set_dictionary('dictionary/药品名称大全.txt')  #分词字典
+jieba.analyse.set_idf_path('dictionary/药品名称大全.txt') #语料库字典
 def check_state():
     connection = pymysql.connect(host='localhost',
                              user='root',
@@ -21,7 +21,7 @@ def check_state():
     start = time.time()
     #此处SQL按需修改
     #sql = "select doctor_answer from fuck_ill where id>"+id+" order by ill_id asc limit 100000"
-    sql = "select doctor_answer from fuck_ill  where age>60"
+    sql = "select doctor_answer from fuck_ill "
     cursor.execute(sql)
     results = list(cursor.fetchall())
     end1 = time.time()
@@ -64,11 +64,12 @@ escape = end - start
 print('>>>>>>: 本次数据库读取时间：' + str(escape)+'秒')
 
 start = time.time()
+print('>>>>>>: 开始分析词频：'+str(start))
 analyse(content)
 end = time.time()
 escape = end - start
-print('>>>>>>: 本次词频提取用时：' + str(escape)+'秒')
-print('>>>>>>: 词频分析完成')
+print('>>>>>>: 词频分析完成：'+str(end))
+print('>>>>>>: 本次词频分析耗时：' + str(escape)+'秒')
 
 #打印结果
 print(statistic)
