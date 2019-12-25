@@ -28,8 +28,6 @@ def check_state():
 	results = cursor.fetchall()
 	cursor.close()
 	return results
-	
-
 
 a = check_state()
 newest =  a[0]['ill_id']
@@ -40,7 +38,7 @@ while True:
 	a = check_state()
 	new =  a[0]['ill_id']
 	if((new-newest)<20):
-		print('ready to restart health')
+		print('ready to restart scanner')
 		try:
 			std.kill()
 		except Exception as e:
@@ -48,7 +46,7 @@ while True:
 			print('kill std fail')
 		else:
 			print('kill std sucess')
-		std = subprocess.Popen('python health.py')
+		std = subprocess.Popen('python scanner.py')
 	else:
 		how = int(new) - int(newest)
 		how = str(how)

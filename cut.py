@@ -74,7 +74,9 @@ print('>>>>>>: 词频分析完成')
 print(statistic)
 
 #绘制词云图
-wordcloud = WordCloud(font_path = "simfang.ttf",width=2048, height=1080,background_color = 'White').generate_from_frequencies(statistic)
+wordcloud = WordCloud(font_path = "simfang.ttf",width=1920, height=1080,scale=1,background_color = 'White').generate_from_frequencies(statistic)
+#保存图片
+wordcloud.to_file('wordcloud.png')
 import matplotlib.pyplot as plt
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
