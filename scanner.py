@@ -35,11 +35,13 @@ def get_info(html):
     age = age.replace('：','')
     title = soup.find('div','g-under-askT').find_all('h1')[0].get_text()
     info = soup.find('p','crazy_keyword_inlink').get_text()
+    info=info.replace(" ","").replace("\t","")
     drugs = soup.find('div','g-otherask-b article-cont').find_all('p','crazy_keyword_inlink')
     answer = ''
     for i in drugs:
         answer = answer + i.get_text()
     answer = re.sub('\n','',answer)
+    answer=answer.replace(" ","").replace("\t","")
     data={}
     data['time'] = time
     data['sex'] = sex
