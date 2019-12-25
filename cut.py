@@ -42,18 +42,18 @@ def check_state():
     print('>>>>>>: 一共'+str(len(results))+'条数据')
     return line
 
-tongji = {}
+statistic = {}
 def analyse(content):
     try:
         # jieba.analyse.set_stop_words('你的停用词表路径')
-        global tongji
+        global statistic
         tags = jieba.analyse.extract_tags(content, topK=200, withWeight=True)
         for v, n in tags:
             # 权重是小数，为了凑整，乘了一万
-            if u'' + v in tongji:
-                tongji[u'' + v] = tongji[u'' + v] + int(n * 10000)
+            if u'' + v in statistic:
+                statistic[u'' + v] = statistic[u'' + v] + int(n * 10000)
             else:
-                tongji[u'' + v] = int(n * 10000)
+                statistic[u'' + v] = int(n * 10000)
     finally:
         pass
 
@@ -70,30 +70,11 @@ escape = end - start
 print('>>>>>>: 本次词频提取用时：' + str(escape)+'秒')
 print('>>>>>>: 词频分析完成')
 
-# ifn = r"xuewei.txt"
-# ofn = r"dic_for_idf.txt"
-# ofn2 = r"dic_for_use.txt"
-# infile = open(ifn,'rb')
-# outfile = open(ofn,'wb')
-# outfile2 = open(ofn2,'wb')
-#
-# for eachline in infile.readlines():
-#     lines = eachline.strip()
-#     lines1 = lines+' 100\n'
-#     lines2 = lines+' 100 n\n'
-#     outfile.write(lines1)
-#     outfile2.write(lines2)
-#
-# infile.close
-# outfile.close
-# outfile2.close
-
-
 #打印结果
-print(tongji)
+print(statistic)
 
 #绘制词云图
-wordcloud = WordCloud(font_path = "simfang.ttf",width=2048, height=1080,background_color = 'White').generate_from_frequencies(tongji)
+wordcloud = WordCloud(font_path = "simfang.ttf",width=2048, height=1080,background_color = 'White').generate_from_frequencies(statistic)
 import matplotlib.pyplot as plt
 plt.imshow(wordcloud, interpolation='bilinear')
 plt.axis("off")
