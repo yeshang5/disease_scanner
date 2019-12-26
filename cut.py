@@ -42,7 +42,7 @@ def check_state():
     print('>>>>>>: 一共'+str(len(results))+'条数据')
     return line
 
-statistic = {}
+statistic = {}   #统计的结果集
 def analyse(content):
     try:
         # jieba.analyse.set_stop_words('你的停用词表路径')

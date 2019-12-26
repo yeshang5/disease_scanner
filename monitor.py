@@ -29,20 +29,20 @@ def check_state():
 	cursor.close()
 	return results
 
-a = check_state()
-newest =  a[0]['ill_id']
+latest = check_state()
+newest =  latest[0]['ill_id']
 time.sleep(3)
 print('the newest id is:'+str(newest))
 
 while True:
-	a = check_state()
-	new =  a[0]['ill_id']
+	latest = check_state()
+	new =  latest[0]['ill_id']
 	if((new-newest)<20):
 		print('ready to restart scanner')
 		try:
 			std.kill()
 		except Exception as e:
-			print(e)
+			print(e.args)
 			print('kill std fail')
 		else:
 			print('kill std sucess')

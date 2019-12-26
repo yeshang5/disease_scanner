@@ -121,10 +121,10 @@ def worker():
         time.sleep(1)
 
 
-a = check_state()   # a是数据库中取出来的结果集
+latest = check_state()   # latest是数据库中取出来的最新一条记录
 newest=75500000 #2019年的数据
-if len(a) is not 0:
-    newest = a[0]['ill_id']        #newest记录已有数据中的最新记录的id，用于断点续爬
+if len(latest) is not 0:
+    newest = latest[0]['ill_id']        #newest记录已有数据中的最新记录的id，用于断点续爬
 
 goal = newest + 500000     #从第50w条数据开始爬，不要太早之前的数据
 
