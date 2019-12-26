@@ -122,7 +122,7 @@ def worker():
 
 
 a = check_state()   # a是数据库中取出来的结果集
-newest=50000000  #2014年之后的数据
+newest=75500000 #2019年的数据
 if len(a) is not 0:
     newest = a[0]['ill_id']        #newest记录已有数据中的最新记录的id，用于断点续爬
 

@@ -37,7 +37,7 @@ tags = jieba.analyse.extract_tags(content, topK=200, withWeight=True)
 ### 语料库
 项目中收集了部分医疗相关的语料词典，可自行根据需求更改查询sql及引用的语料库实现不同类别的信息分析统计。
 
-我发现[搜狗的词库](https://pinyin.sogou.com/dict/cate/index/132/download/9)真的是个很不错的地方，有太多医疗相关的语料，不过要注意的是，下载下来不能直接使用，需要使用工具解码，这里推荐『深蓝词库转换』，使用非常方便
+我发现[搜狗的词库](https://pinyin.sogou.com/dict/cate/index/132/download/9)真的是个很不错的地方，有许多医疗相关的语料，不过要注意的是，下载下来不能直接使用，需要使用工具解码，这里推荐『深蓝词库转换』，使用非常方便
 ![深蓝词库](https://img.niucodata.com/slck.png)
 
 

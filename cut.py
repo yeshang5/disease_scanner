@@ -21,7 +21,7 @@ def check_state():
     start = time.time()
     #此处SQL按需修改
     #sql = "select doctor_answer from fuck_ill where id>"+id+" order by ill_id asc limit 100000"
-    sql = "select doctor_answer from fuck_ill "
+    sql = "select doctor_answer from fuck_ill limit 100000"
     cursor.execute(sql)
     results = list(cursor.fetchall())
     end1 = time.time()
@@ -64,11 +64,11 @@ escape = end - start
 print('>>>>>>: 本次数据库读取时间：' + str(escape)+'秒')
 
 start = time.time()
-print('>>>>>>: 开始分析词频：'+str(start))
+print('>>>>>>: 开始分析词频')
 analyse(content)
 end = time.time()
 escape = end - start
-print('>>>>>>: 词频分析完成：'+str(end))
+print('\n>>>>>>: 词频分析完成')
 print('>>>>>>: 本次词频分析耗时：' + str(escape)+'秒')
 
 #打印结果
