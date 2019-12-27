@@ -8,8 +8,8 @@ import pymysql.cursors
 #初始化开始时间，分词字典，词频统计字典
 firsttime = time.time()
 
-jieba.set_dictionary('dictionary/药品名称大全.txt')  #分词字典
-jieba.analyse.set_idf_path('dictionary/药品名称大全.txt') #语料库字典
+jieba.set_dictionary('dictionary/人体部位大全.txt')  #分词字典
+jieba.analyse.set_idf_path('dictionary/人体部位大全.txt') #语料库字典
 def check_state():
     connection = pymysql.connect(host='localhost',
                              user='root',
@@ -21,7 +21,7 @@ def check_state():
     start = time.time()
     #此处SQL按需修改
     #sql = "select doctor_answer from fuck_ill where id>"+id+" order by ill_id asc limit 100000"
-    sql = "select doctor_answer from fuck_ill limit 100000"
+    sql = "select ill_detail from fuck_ill limit 50000"
     cursor.execute(sql)
     results = list(cursor.fetchall())
     end1 = time.time()

@@ -84,7 +84,9 @@ def do_scan(ill_id):
         pass
     else:
         try:
-            add_data(results,x_s)
+            if results['sex'] == '男' or results['sex']=='女':
+                print(results['sex'])
+                add_data(results,x_s)
         except pymysql.InternalError    as e:
             pass
         else:

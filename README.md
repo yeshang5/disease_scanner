@@ -2,7 +2,8 @@
 python3 
 
 ### 爬虫
-扫描医疗问答的爬虫文件为`scanner.py`，加入多线程后，爬虫隔一段时间效率会下降，甚至卡死，研究了半天也没什么好办法，所以又写了一个监控程序，也就是`monitor.py` ，它会每隔五秒钟看一下新增的数据，如果低于一定数量，就重启一次爬虫
+扫描医疗问答的爬虫文件为`scanner.py`，加入多线程后，爬虫隔一段时间效率会下降，甚至卡死，研究了半天也没什么好办法，所以又写了一个监控程序，也就是`monitor.py` ，它会每隔五秒钟看一下新增的数据，如果低于一定数量，就重启一次爬虫。
+cut.py是词频分析统计程序，直接运行即可看到词频分析结果，可以根据自己的需求修改查询sql语句来获取不同的统计结果。
 
 ### jieba
 
@@ -40,5 +41,21 @@ tags = jieba.analyse.extract_tags(content, topK=200, withWeight=True)
 我发现[搜狗的词库](https://pinyin.sogou.com/dict/cate/index/132/download/9)真的是个很不错的地方，有许多医疗相关的语料，不过要注意的是，下载下来不能直接使用，需要使用工具解码，这里推荐『深蓝词库转换』，使用非常方便
 ![深蓝词库](https://img.niucodata.com/slck.png)
 
+在结巴源码`tfida.py`文件中`extract_tags`函数中
+
+`words = self.postokenizer.cut(sentence)`下插入
+`wordsList=self.postokenizer.lcut(sentence)`
+
+`for w in words:`里插入以下代码，显示分析进度。
+```python
+    #用于实时显示分析进度
+    numTemp=numTemp+1
+    precent=numTemp/len(wordsList)*100
+    precent=round(precent,2)
+    print("\r>>>分析进度: {}%".format(precent),end="")
+```
+
+    
+    
 
 
