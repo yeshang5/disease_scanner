@@ -54,6 +54,8 @@ tags = jieba.analyse.extract_tags(content, topK=200, withWeight=True)
     precent=round(precent,2)
     print("\r>>>分析进度: {}%".format(precent),end="")
 ```
+
+##  结果分析
 ### 总人数:1302980
 
 ### 20岁以下 （322595条）
